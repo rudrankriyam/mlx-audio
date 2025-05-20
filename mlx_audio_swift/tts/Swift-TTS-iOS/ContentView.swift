@@ -47,10 +47,6 @@ struct ContentView: View {
                             HStack {
                                 Text("Kokoro")
                                     .font(.title)
-//                                if viewModel.memoryPressureIndicator {
-//                                    Image(systemName: "exclamationmark.triangle.fill")
-//                                      .foregroundColor(.orange)
-//                                }
                             }
                             Text("Time to first audio sample: \(viewModel.audioGenerationTime > 0 ? String(format: "%.2f", viewModel.audioGenerationTime) : "--")s")
                             .font(.caption)

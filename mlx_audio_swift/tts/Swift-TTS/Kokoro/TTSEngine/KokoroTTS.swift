@@ -67,7 +67,6 @@ public class KokoroTTS {
     case tooManyTokens
     case sentenceSplitError
     case modelNotInitialized
-    case memoryPressure
   }
 
   private var bert: CustomAlbert!
@@ -179,7 +178,6 @@ public class KokoroTTS {
     isModelInitialized = true
   }
 
-  // Generate audio for tokens
   private func generateAudioForTokens(
     inputIds: [Int],
     speed: Float
@@ -249,7 +247,6 @@ public class KokoroTTS {
           let s = refS[0 ... 1, 128...]
           s.eval()
 
-          // 4. Duration encoding - lots of memory usage here
           return try autoreleasepool { () -> MLXArray in
             // Ensure all components are initialized
             guard let durationEncoder = durationEncoder,
@@ -318,8 +315,6 @@ public class KokoroTTS {
             let indices = MLX.concatenated(allIndices)
             indices.eval()
 
-
-            // Release chunks
             allIndices.removeAll()
 
             let indicesShape = indices.shape[0]
@@ -371,7 +366,6 @@ public class KokoroTTS {
             // Go back to the original dense matrix approach but with better memory management
             // Create sparse matrix efficiently using Swift arrays first
             var swiftPredAlnTrg = [Float](repeating: 0.0, count: inputIdsShape * indicesShape)
-
             // Process in batches to reduce cache misses
             let matrixBatchSize = 1000
             for startIdx in stride(from: 0, to: rowIndices.count, by: matrixBatchSize) {
@@ -411,7 +405,6 @@ public class KokoroTTS {
               _ = predAlnTrgBatched
             }
 
-            // 6. Prosody generation
             return try autoreleasepool { () -> MLXArray in
               // Ensure components are initialized
               guard let prosodyPredictor = prosodyPredictor,
@@ -504,7 +497,6 @@ public class KokoroTTS {
   private func splitIntoSentences(text: String) -> [String] {
     guard !text.isEmpty else { return [] }
 
-    // Define sentence terminators
     let sentenceTerminators: Set<Character> = [".", "!", "?", ";", ":", "\n"]
 
     // Common abbreviation patterns to supplement generic detection
@@ -524,12 +516,9 @@ public class KokoroTTS {
       if sentenceTerminators.contains(char) {
         var shouldSplit = true
 
-        // Handle newlines
         if char == "\n" {
           shouldSplit = i > sentenceStart && chars.distance(from: sentenceStart, to: i) > 2
-        }
-        // For periods, check if it's part of an abbreviation
-        else if char == "." {
+        } else if char == "." { // for periods, check if it's part of an abbreviation
           // Get the substring from the previous whitespace to this period
           let wordStart = chars[..<i].lastIndex(where: { $0.isWhitespace }) ?? sentenceStart
           let nextIndex = chars.index(after: wordStart)
