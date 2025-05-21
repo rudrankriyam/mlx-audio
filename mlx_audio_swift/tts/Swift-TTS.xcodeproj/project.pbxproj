@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AD6E0972DDDCC8C003FB924 /* Transformers in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD6E0962DDDCC8C003FB924 /* Transformers */; };
+		0AD6E0992DDDCCDC003FB924 /* Transformers in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD6E0982DDDCCDC003FB924 /* Transformers */; };
 		18D7A7B32DCDAB75005776E9 /* MLX in Frameworks */ = {isa = PBXBuildFile; productRef = 18D7A7B22DCDAB75005776E9 /* MLX */; };
 		18D7A7B52DCDAB75005776E9 /* MLXFFT in Frameworks */ = {isa = PBXBuildFile; productRef = 18D7A7B42DCDAB75005776E9 /* MLXFFT */; };
 		18D7A7B72DCDAB75005776E9 /* MLXFast in Frameworks */ = {isa = PBXBuildFile; productRef = 18D7A7B62DCDAB75005776E9 /* MLXFast */; };
@@ -152,7 +154,6 @@
 				Kokoro/Resources/jf_nezumi.json,
 				Kokoro/Resources/jf_tebukuro.json,
 				Kokoro/Resources/jm_kumo.json,
-				"Kokoro/Resources/kokoro-v1_0.safetensors",
 				Kokoro/Resources/pf_dora.json,
 				Kokoro/Resources/pm_alex.json,
 				Kokoro/Resources/pm_santa.json,
@@ -258,6 +259,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD6E0992DDDCCDC003FB924 /* Transformers in Frameworks */,
 				18D7A7BB2DCDAB75005776E9 /* MLXNN in Frameworks */,
 				18D7A7B92DCDAB75005776E9 /* MLXLinalg in Frameworks */,
 				18D7A7B32DCDAB75005776E9 /* MLX in Frameworks */,
@@ -270,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD6E0972DDDCC8C003FB924 /* Transformers in Frameworks */,
 				7BBF581B2DDD074E0047DCFF /* MLXNN in Frameworks */,
 				7BBF58192DDD07310047DCFF /* MLX in Frameworks */,
 				7BBF581F2DDD07680047DCFF /* MLXFast in Frameworks */,
@@ -359,6 +362,7 @@
 				18D7A7B62DCDAB75005776E9 /* MLXFast */,
 				18D7A7B82DCDAB75005776E9 /* MLXLinalg */,
 				18D7A7BA2DCDAB75005776E9 /* MLXNN */,
+				0AD6E0982DDDCCDC003FB924 /* Transformers */,
 			);
 			productName = "Swift-TTS";
 			productReference = 26942CF62DABD3B400B82507 /* Swift-TTS.app */;
@@ -386,6 +390,7 @@
 				7BBF581A2DDD074E0047DCFF /* MLXNN */,
 				7BBF581C2DDD07610047DCFF /* MLXFFT */,
 				7BBF581E2DDD07680047DCFF /* MLXFast */,
+				0AD6E0962DDDCC8C003FB924 /* Transformers */,
 			);
 			productName = "Swift-TTS-iOS";
 			productReference = 7BBF57E32DDD06460047DCFF /* Swift-TTS-iOS.app */;
@@ -424,6 +429,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				18D7A7B12DCDAB75005776E9 /* XCRemoteSwiftPackageReference "mlx-swift" */,
+				0AD6E0952DDDCC8C003FB924 /* XCRemoteSwiftPackageReference "swift-transformers" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 26942CF72DABD3B400B82507 /* Products */;
@@ -808,6 +814,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0AD6E0952DDDCC8C003FB924 /* XCRemoteSwiftPackageReference "swift-transformers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huggingface/swift-transformers.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.20;
+			};
+		};
 		18D7A7B12DCDAB75005776E9 /* XCRemoteSwiftPackageReference "mlx-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ml-explore/mlx-swift";
@@ -819,6 +833,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0AD6E0962DDDCC8C003FB924 /* Transformers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AD6E0952DDDCC8C003FB924 /* XCRemoteSwiftPackageReference "swift-transformers" */;
+			productName = Transformers;
+		};
+		0AD6E0982DDDCCDC003FB924 /* Transformers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AD6E0952DDDCC8C003FB924 /* XCRemoteSwiftPackageReference "swift-transformers" */;
+			productName = Transformers;
+		};
 		18D7A7B22DCDAB75005776E9 /* MLX */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18D7A7B12DCDAB75005776E9 /* XCRemoteSwiftPackageReference "mlx-swift" */;
