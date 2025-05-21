@@ -24,7 +24,7 @@ public class KokoroTTSModel: ObservableObject {
     @Published var generationInProgress = false
 
     // A separate property to track if audio is currently playing
-    @Published var isAudioPlaying: Bool = false {
+    @Published public var isAudioPlaying: Bool = false {
         didSet {
             // Avoid redundant operations for repeated identical values
             if oldValue != isAudioPlaying {
