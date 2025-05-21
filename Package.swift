@@ -10,8 +10,7 @@ let package = Package(
             targets: ["Swift-TTS","ESpeakNG"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ml-explore/mlx-swift", from: "0.25.2"),
-        .package(url: "ttps://github.com/huggingface/swift-transformers.git", from: "0.1.20")
+        .package(url: "https://github.com/ml-explore/mlx-swift", from: "0.25.2")
     ],
     targets: [
         .binaryTarget(
@@ -21,7 +20,6 @@ let package = Package(
         .target(
             name: "Swift-TTS",
             dependencies: [.product(name: "MLX", package: "mlx-swift"),
-                           .product(name: "Transformers", package: "swift-transformers"),
                            .product(name: "MLXFFT", package: "mlx-swift"),
                            .product(name: "MLXNN", package: "mlx-swift"),
                            "ESpeakNG"
