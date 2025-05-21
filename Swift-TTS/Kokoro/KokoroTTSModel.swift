@@ -183,7 +183,7 @@ public class KokoroTTSModel: ObservableObject {
          startSpeechGeneration(text: trimmedText, voice: voice, speed: speed)
     }
 
-    func stopPlayback() {
+    public func stopPlayback() {
         stopPlaybackMonitoring()
         resetBufferCounters()
 
