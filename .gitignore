@@ -1,3 +1,75 @@
+# Xcode
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User settings
+xcuserdata/
+
+## Obj-C/Swift specific
+*.hmap
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+# Package.resolved
+# *.xcodeproj
+#
+# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
+# hence it is not needed unless you have added a package configuration file to your project
+.swiftpm
+
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+#
+# Pods/
+#
+# Add this line if you want to avoid checking in source code from the Xcode workspace
+# *.xcworkspace
+
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build/
+
+# Accio dependency management
+Dependencies/
+.accio/
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/#source-control
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Code Injection
+#
+# After new code Injection tools there's a generated folder /iOSInjectionProject
+# https://github.com/johnno1962/injectionforxcode
+
+iOSInjectionProject/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -32,13 +104,64 @@ env/
 .vscode/
 *.swp
 *.swo
+*.swn
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
+# Build artifacts
+.build/
+DerivedData/
+*.xcodeproj/*.xcuserdatad/
+*.xcodeproj/*.xcuserstate
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+*.xcodeproj
+.swiftpm
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# MLX specific
 test.ipynb
 output/
-swift/Swift-TTS/Swift-TTS/Kokoro/Resources/kokoro-v1_0.safetensors
-swift/Swift-TTS/Swift-TTS/Orpheus/Resources/orpheus-3b-0.1-ft-4bit.safetensors
 *.safetensors
+
+# Localized files
+*.lproj/
+
+# Localization string files (English is the default)
+*.strings
+!InfoPlist.strings
+
+# Models and data
+*.mlmodel
+*.mlmodelc
+*.mlpackage
+*.mlmodel/*
+*.mlpackage/*
+
+# Xcode 15+ related
+.xcode.env.local
+
+# Other
+.swiftpm/xcode/package.xcworkspace/xcshareddata/swiftpm/Package.resolved
