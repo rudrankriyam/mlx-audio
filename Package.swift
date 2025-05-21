@@ -25,7 +25,8 @@ let package = Package(
                            "ESpeakNG"
             ],
             path: "Swift-TTS",
-            exclude: ["Preview Content","Assets.xcassets","Swift_TTSApp.swift","Swift_TTS.entitlements"]),
+            exclude: ["Preview Content","Assets.xcassets","Swift_TTSApp.swift","Swift_TTS.entitlements"],
+            resources: [.process("Kokoro/Resources")]),
         .testTarget(
             name: "Swift-TTS-Tests",
             dependencies: ["Swift-TTS"],
