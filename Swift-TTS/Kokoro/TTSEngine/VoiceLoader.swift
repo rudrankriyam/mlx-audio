@@ -15,7 +15,7 @@ class VoiceLoader {
 
   static func loadVoice(_ voice: TTSVoice) -> MLXArray {
     let (file, ext) = Constants.voiceFiles[voice]!
-    let filePath = Bundle.module.path(forResource: file, ofType: ext)!
+    let filePath = Bundle.main.path(forResource: file, ofType: ext)!
       print(filePath)
     return try! read3DArrayFromJson(file: filePath, shape: [510, 1, 256])!
   }

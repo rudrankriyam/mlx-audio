@@ -32,7 +32,7 @@ struct ContentView: View {
                     if kokoroTTSModel == nil {
                         kokoroTTSModel = KokoroTTSModel()
                     }
-                    await kokoroTTSModel!.say(sayThis, .bmGeorge)
+                    kokoroTTSModel!.say(sayThis, .bmGeorge)
                     status = "Done"
                 }
             }
