@@ -20,7 +20,13 @@ class VoiceLoader {
     #else
     let bundle = Bundle.main
     #endif
-    let filePath = bundle.path(forResource: file, ofType: ext)!
+    guard let filePath = bundle.path(forResource: file, ofType: ext) else {
+        // Ideally, 'loadVoice' should throw a custom error here, e.g.:
+        // throw VoiceLoadingError.fileNotFound(name: file, type: ext)
+        // If changing the function signature to 'throws' is not done in this PR,
+        // this fatalError makes the crash point explicit but doesn't prevent it.
+        fatalError("Voice file '\(file).\(ext)' not found in bundle \(bundle).")
+    }
       print(filePath)
     return try! read3DArrayFromJson(file: filePath, shape: [510, 1, 256])!
   }
