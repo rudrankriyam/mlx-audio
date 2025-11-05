@@ -41,12 +41,13 @@ extension MLXArray {
             return source
         }
 
+        // Create a copy of the source array
+        let result = source + 0 // Adding 0 creates a copy
+
         // For 1D case (most common in your use case), we can use advanced indexing
         if axis == 0 && source.ndim == 1 {
-            // Create a copy of the source array and apply updates
             // Use advanced indexing to update multiple elements at once
             // This keeps everything on GPU without CPU round-trips
-            let result = source + 0 // Adding 0 creates a copy
             result[indices] = updates
             return result
         }
@@ -55,7 +56,7 @@ extension MLXArray {
         // For now, fall back to a simpler approach that still avoids .item() calls
         // This is a placeholder - the 1D case above should handle your repetition penalty use case
 
-        return source
+        return result
     }
 
     /// Returns a new array of zeros with the same shape and type as the input array.
