@@ -41,22 +41,21 @@ extension MLXArray {
             return source
         }
 
-        // Create a copy of the source array
-        var result = source + 0 // Adding 0 creates a copy
-        
         // For 1D case (most common in your use case), we can use advanced indexing
         if axis == 0 && source.ndim == 1 {
+            // Create a copy of the source array and apply updates
             // Use advanced indexing to update multiple elements at once
             // This keeps everything on GPU without CPU round-trips
+            let result = source + 0 // Adding 0 creates a copy
             result[indices] = updates
             return result
         }
-        
+
         // For more complex cases, we could implement other optimizations
         // For now, fall back to a simpler approach that still avoids .item() calls
         // This is a placeholder - the 1D case above should handle your repetition penalty use case
-        
-        return result
+
+        return source
     }
 
     /// Returns a new array of zeros with the same shape and type as the input array.
@@ -81,16 +80,24 @@ extension MLXArray {
 
     /// Converts the MLXArray to a Swift array of the specified type.
     func asArray<T>(_ type: T.Type) -> [T] {
-        // First convert to a list of MLXArray elements
-        let elements = self.asArray(type)
-        
-        // Then convert each element to the target type
-        return elements.compactMap { element in
-            if let value = element as? T {
-                return value
-            }
-            return nil
+        // Extract array data based on type
+        let count = self.size
+        var result: [T] = []
+        result.reserveCapacity(count)
+
+        // Use the proper MLXArray accessor based on type
+        if T.self == Float.self {
+            let data = self.asArray(Float.self)
+            return data as! [T]
+        } else if T.self == Int32.self {
+            let data = self.asArray(Int32.self)
+            return data as! [T]
+        } else if T.self == Int.self {
+            let data = self.asArray(Int32.self).map { Int($0) }
+            return data as! [T]
         }
+
+        return result
     }
 
     /// Stacks arrays along a new axis.
@@ -172,7 +179,6 @@ extension MLXArray {
             }
         }
         
-        let count = (stop - start + step - 1) / step  // Integer division for count
         let sequence = Swift.stride(from: start, to: stop, by: step)
         
         // Create the array based on the dtype
