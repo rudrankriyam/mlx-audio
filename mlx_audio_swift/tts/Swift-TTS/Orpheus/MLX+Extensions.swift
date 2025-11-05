@@ -200,7 +200,6 @@ extension MLXArray {
             }
         }
         
-        let count = Int((stop - start) / step)  // Integer division for count
         let sequence = Swift.stride(from: start, to: stop, by: step)
         
         // Create the array based on the dtype
