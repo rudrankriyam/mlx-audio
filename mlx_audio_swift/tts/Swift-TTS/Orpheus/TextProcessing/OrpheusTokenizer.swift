@@ -93,17 +93,17 @@ public class OrpheusTokenizer {
         let padToken: Int = 128263
         let audioStartTokens: [Int] = [128261, 128257]
         let audioEndTokens: [Int] = [128258, 128262]
-        
-        var promptsToUse = prompts
+
+        let promptsToUse = prompts
         let audioInputIds: MLXArray? = nil
-        var audioTranscriptIds: MLXArray? = nil
-        
-        if let refAudio = refAudio, let refText = refText {
+        let audioTranscriptIds: MLXArray? = nil
+
+        if let _ = refAudio, let _ = refText {
             // TODO: Implement encodeAudioToCodes in Swift to match Python
             // audioInputIds = encodeAudioToCodes(refAudio) + audioCodeOffset
             // audioTranscriptIds = tokenize(text: refText)
-        } else if let voice = voice {
-            
+        } else if voice != nil {
+
         }
         
         // Tokenize prompts
