@@ -1,5 +1,4 @@
 # MLX-Audio
-[![Star History Chart](https://api.star-history.com/svg?repos=rudrankriyam/mlx-audio&type=Date)](https://star-history.com/#rudrankriyam/mlx-audio&Date)
 
 
 A text-to-speech (TTS) and Speech-to-Speech (STS) library built on Apple's MLX framework, providing efficient speech synthesis on Apple Silicon.
@@ -333,3 +332,5 @@ let raw2 = try await s2.generateRaw(for: "No auto-play for this one")
   howpublished = {\url{https://github.com/Blaizzy/mlx-audio}},
   note = {A text-to-speech (TTS), speech-to-text (STT) and speech-to-speech (STS) library built on Apple's MLX framework, providing efficient speech analysis on Apple Silicon.}
 }
+
+[![Star History Chart](https://api.star-history.com/svg?repos=rudrankriyam/mlx-audio&type=Date)](https://star-history.com/#rudrankriyam/mlx-audio&Date)
