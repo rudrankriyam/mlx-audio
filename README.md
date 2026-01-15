@@ -1,4 +1,6 @@
 # MLX-Audio
+[![Star History Chart](https://api.star-history.com/svg?repos=rudrankriyam/mlx-audio&type=Date)](https://star-history.com/#rudrankriyam/mlx-audio&Date)
+
 
 A text-to-speech (TTS) and Speech-to-Speech (STS) library built on Apple's MLX framework, providing efficient speech synthesis on Apple Silicon.
 
